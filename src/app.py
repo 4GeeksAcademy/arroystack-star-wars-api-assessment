@@ -60,8 +60,8 @@ def get_or_create_users():
 def get_or_delete_single_user(user_id):
     if request.method == "GET":
         return "This is a GET request from 'Single User' endpoint"
-    elif request.method == "POST":
-        return "This is a POST request from 'Single User' endpoint"
+    elif request.method == "DELETE":
+        return "This is a DELETE request from 'Single User' endpoint"
 
 
 # CHARACTER ENDPOINTS
@@ -77,8 +77,8 @@ def get_or_post_characters():
 def get_or_delete_single_character(character_id):
     if request.method == "GET":
         return "This is a GET request from 'Single Character' endpoint"
-    elif request.method == "POST":
-          return "This is a POST request from 'Single Character' endpoint"
+    elif request.method == "DELETE
+          return "This is a DELETErequest from 'Single Character' endpoint"
     
 
 # PLANET ENDPOINTS
@@ -94,17 +94,27 @@ def get_or_post_planets():
 def get_or_delete_single_planet(planet_id):
     if request.method == "GET":
         return "This is a GET request from 'Single Planet' endpoint"
-    elif request.method == "POST":
-          return "This is a POST request from 'Single Planet' endpoint"
+    elif request.method == "DELETE":
+          return "This is a DELETE request from 'Single Planet' endpoint"
 
 
 # FAVORITE ENDPOINTS
+@app.route('/favorites', methods=['GET','POST'])
+def get_or_post_favorite(favorite_id):
+    if request.method == "GET":
+        return "This is a GET request from 'Favorite' endpoint"
+    elif request.method == "POST":
+        return "This is a DELETE request from 'Single Planet' endpoint"
+
+
 @app.route('/favorites/<int:favorite_id>', methods=['GET','DELETE'])
 def get_or_delete_favorite(favorite_id):
     if request.method == "GET":
         return "This is a GET request from 'Favorite' endpoint"
     elif request.method == "DELETE":
         return "This is a DELETE request from 'Single Planet' endpoint"
+
+
 
 
 # this only runs if `$ python src/app.py` is executed
