@@ -10,7 +10,7 @@ from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
 from models import db, User
-#from models import Person
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -45,6 +45,67 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+# USER ENDPOINTS
+@app.route('/users', methods=['GET','POST'])
+def get_or_create_users():
+    if request.method == "GET":
+        return "This is a GET request from Users endpoint"
+    elif request.method == "POST":
+        return "This is a POST request from 'Users' endpoint"
+    
+
+@app.route('/users/<int:user_id>', methods=['GET','DELETE'])
+def get_or_delete_single_user(user_id):
+    if request.method == "GET":
+        return "This is a GET request from 'Single User' endpoint"
+    elif request.method == "POST":
+        return "This is a POST request from 'Single User' endpoint"
+
+
+# CHARACTER ENDPOINTS
+@app.route('/characters', methods=['GET','POST'])
+def get_or_post_characters():
+      if request.method == "GET":
+          return "This is a GET request from 'Get all or Post Character' endpoint"
+      elif request.method == "POST":
+          return "This is a POST request from 'Get all or Post Character' endpoint"
+
+
+@app.route('/characters/<int:character_id>', methods=['GET','DELETE'])
+def get_or_delete_single_character(character_id):
+    if request.method == "GET":
+        return "This is a GET request from 'Single Character' endpoint"
+    elif request.method == "POST":
+          return "This is a POST request from 'Single Character' endpoint"
+    
+
+# PLANET ENDPOINTS
+@app.route('/planets', methods=['GET','POST'])
+def get_or_post_planets():
+      if request.method == "GET":
+          return "This is a GET request from 'All planets' endpoint"
+      elif request.method == "POST":
+          return "This is a POST request from 'All planets endpoint"
+
+
+@app.route('/planets/<int:planet_id>', methods=['GET','DELETE'])
+def get_or_delete_single_planet(planet_id):
+    if request.method == "GET":
+        return "This is a GET request from 'Single Planet' endpoint"
+    elif request.method == "POST":
+          return "This is a POST request from 'Single Planet' endpoint"
+
+
+# FAVORITE ENDPOINTS
+@app.route('/favorites/<int:favorite_id>', methods=['GET','DELETE'])
+def get_or_delete_favorite(favorite_id):
+    if request.method == "GET":
+        return "This is a GET request from 'Favorite' endpoint"
+    elif request.method == "DELETE":
+        return "This is a DELETE request from 'Single Planet' endpoint"
+
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
